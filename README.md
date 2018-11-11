@@ -26,4 +26,5 @@
  <li>Implement themes: Pre-made themes and fully customizable themes</li>
  <li>Fix user feedback when loading treeview</li>
  <li>Fix option to "clear recent projects"</li>
+ <li>Fix copy/paste bug (sometimes works, sometimes not. WHY?)</li>
  </ol>
