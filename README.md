@@ -14,8 +14,15 @@
 <h2>To Do List:</h2>
 <ol>
  <li>Implement CSS Toolbar</li>
- <li>Implement sort by filetype function in file hierarchy</li>
+ <li>Implement "sort by filetype" function in file hierarchy</li>
+ <li>implement other "sort by" options such as by: name, date created, file size and more</li>
  <li>Either fix resizing issues with splitcontainers or insert limitations to prevent glitching</li>
  <li>Optimization where needed</li>
- <li>Optimize "create CSS link ref" based on file's location RELEVANT to the page it is being linked from</li>
+ <li>Optimize "create CSS link ref" based on file's location <b>relevant</b> to the page it is being linked from</li>
+ <li>Implement syntax highlighting for ".css", ".js", and ".php" files</li>
+ <li>Customize the syntax highlighting for ".html" files</li>
+ <li>Add customizable syntax highlighting</li>
+ <li>Create "Settings" area</li>
+ <li>Fix cursor icon changes when switching between "grab color from screen" mode and regular mode</li>
+ <Implement themes</li>
  </ol>
