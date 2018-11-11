@@ -1,35 +1,14 @@
 ﻿Option Explicit On
 
-
 Imports System.IO
 Imports FastColoredTextBoxNS
-Imports System.Text
-Imports System
-Imports System.Drawing
-Imports System.Windows.Forms
-Imports System.Windows.Forms.VisualStyles
 Imports System.Drawing.Text
 Imports System.Runtime.InteropServices
-Imports System.Drawing.Drawing2D
-Imports System.Drawing.Imaging
-Imports System.Collections.Generic
-Imports System.Text.RegularExpressions
 Imports System.ComponentModel
-Imports System.Threading
-Imports System.Diagnostics
-Imports System.Linq
-Imports System.Runtime.Serialization.Formatters.Binary
-Imports System.Windows.Forms.Design
-Imports WindowsApplication1.MenuComponent_Style
-Imports webster.MenuComponent_Style
 Imports Awesomium.Core
-Imports System.Reflection
 Imports System.Net
-Imports webster.My.Resources
-Imports my.resources
-Imports FarsiLibrary.Win
 
-
+#Region "Custom Font Support"
 Module CustomFont
 
     Public Fonta As Object = My.Resources.consola
@@ -136,10 +115,7 @@ Module CustomFont2
 
 
 End Module
-
-
-
-
+#End Region
 
 
 Public Class Form1
@@ -178,7 +154,7 @@ Public Class Form1
     Dim GETROOT As List(Of TreeNode)
     Dim SMOOTHSAILOR As Boolean = False
 
-
+#Region "Visual Styles Rendering"
     Private Class MyRenderer : Inherits ToolStripProfessionalRenderer
 
 
@@ -277,6 +253,9 @@ Public Class Form1
 
 
     End Class
+#End Region
+
+#Region "MouseHooking"
 
     Private Structure MSLLHOOKSTRUCT
         Public pt As Point
@@ -330,23 +309,16 @@ Public Class Form1
     End Function
 
 
-
+#End Region
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DoubleBuffered = True
-
         PictureBox3.SizeMode = PictureBoxSizeMode.CenterImage
         TreeView1.Font = CustomFont2.GetInstance(12, FontStyle.Regular)
-
         FTS.BackgroundImage = My.Resources.spire
-
         ToolStripTextBox1.Text = ColorDialog1.Color.A & ", " & ColorDialog1.Color.R & ", " & ColorDialog1.Color.G & ", " & ColorDialog1.Color.B
-
         FTS.BackColor = Color.FromArgb(39, 40, 34)
-
-
-
         SplitContainer3.Panel2Collapsed = True
 
         'fctb.Font = CustomFont.GetInstance(15, FontStyle.Regular)
@@ -354,17 +326,14 @@ Public Class Form1
         'fctb.LineNumberColor = Color.OrangeRed
         'fctb.CaretColor = Color.White
 
+        'Custom Style Rendering Initiations
         ToolStripDropDownButton1.DropDownItems.Item(0).Image = ImageList2.Images(ImageList2.Images.Keys(0))
         ToolStripDropDownButton1.DropDown.BackColor = Color.FromArgb(39, 39, 39)
         ToolStripDropDownButton1.DropDown.ForeColor = Color.White
         ToolStripDropDownButton2.DropDown.ForeColor = Color.White
-
-
-
         NoneToolStripMenuItem.ForeColor = Color.White
         CustomToolStripMenuItem.ForeColor = Color.White
         KryptoniumLogoToolStripMenuItem.ForeColor = Color.White
-
         DarkCrownToolStripMenuItem.ForeColor = Color.White
         KryptoniumIconToolStripMenuItem.ForeColor = Color.White
         DarkCrownsToolStripMenuItem.ForeColor = Color.White
@@ -376,29 +345,20 @@ Public Class Form1
         KrissKrossToolStripMenuItem.ForeColor = Color.White
         KrissKrossDissolvedToolStripMenuItem.ForeColor = Color.White
         PlaidToolStripMenuItem.ForeColor = Color.White
-
-
-
         ContextMenuStrip1.BackColor = Color.FromArgb(39, 39, 39)
         ContextMenuStrip1.ForeColor = Color.White
         CopyFilePathToolStripMenuItem.DropDown.BackColor = Color.FromArgb(39, 39, 39)
         CopyFilePathToolStripMenuItem.DropDown.ForeColor = Color.White
-
         ContextMenuStrip2.BackColor = Color.FromArgb(39, 39, 39)
         ContextMenuStrip2.ForeColor = Color.White
-
         ContextMenuStrip3.BackColor = Color.FromArgb(39, 39, 39)
         ContextMenuStrip3.ForeColor = Color.White
-
         ContextMenuStrip1.Renderer = New MyRenderer
         ToolStrip1.Renderer = New MyRenderer
         ToolStrip2.Renderer = New MyRenderer
         ToolStrip3.Renderer = New MyRenderer
         ContextMenuStrip2.Renderer = New MyRenderer
         ContextMenuStrip3.Renderer = New MyRenderer
-
-
-
 
         If TypeOf ToolStrip1.Renderer Is ToolStripProfessionalRenderer Then
             CType(ToolStrip1.Renderer, ToolStripProfessionalRenderer).RoundedEdges = False
@@ -421,12 +381,15 @@ Public Class Form1
         'Next component
 
         'My.Settings.RECENT_PROJECTS.Clear()
+
         If My.Settings.RECENT_PROJECTS Is Nothing Then
             My.Settings.RECENT_PROJECTS = New Specialized.StringCollection
+        Else
+            REGEN_RECENTPROJ()
         End If
 
 
-        REGEN_RECENTPROJ()
+
 
         For Each paper In papers
             paper.BackgroundImage = My.Resources.ResourceManager.GetObject(My.Settings.wally)
@@ -434,7 +397,18 @@ Public Class Form1
 
     End Sub
 
+    Private Sub ClearProjects()
+        Dim result As Integer = MessageBox.Show("Are you sure that you want to clear all recent projects? This can not be undone.", "Warning", MessageBoxButtons.YesNoCancel)
+        If result = DialogResult.Cancel Then
 
+        ElseIf result = DialogResult.No Then
+
+        ElseIf result = DialogResult.Yes Then
+            My.Settings.RECENT_PROJECTS.Clear()
+            ToolStripDropDownButton2.DropDownItems.Clear()
+
+        End If
+    End Sub
 
 
 
@@ -454,6 +428,13 @@ Public Class Form1
         FTS.Items.Clear()
         'WebControl2.Source = New Uri("file:///")
 
+        If My.Settings.RECENT_PROJECTS Is Nothing Then
+            ToolStripDropDownButton2.DropDownItems.Clear()
+
+        Else
+            ToolStripDropDownButton2.DropDownItems.Add("Clear all recent projects", My.Resources.bin15, AddressOf ClearProjects)
+
+        End If
     End Sub
 
     Private Sub MenuItem_Click(sender As Object, e As EventArgs)
@@ -517,6 +498,7 @@ Public Class Form1
 
 
         End Try
+        FTS.Items.Clear()
     End Sub
 
     Private Sub Language_Selector()
@@ -2455,6 +2437,10 @@ Public Class Form1
     End Sub
 
     Private Sub ToolStripButton19_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub ToolStripDropDownButton2_Click(sender As Object, e As EventArgs) Handles ToolStripDropDownButton2.Click
 
     End Sub
 
