@@ -24,5 +24,5 @@
  <li>Add customizable syntax highlighting</li>
  <li>Create "Settings" area</li>
  <li>Fix cursor icon changes when switching between "grab color from screen" mode and regular mode</li>
- <Implement themes</li>
+ <li>Implement themes: Pre-made themes and fully customizable themes</li>
  </ol>
