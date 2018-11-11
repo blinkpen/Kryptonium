@@ -24,4 +24,5 @@
  <li>Create "Settings" area</li>
  <li>Fix cursor icon changes when switching between "grab color from screen" mode and regular mode</li>
  <li>Implement themes: Pre-made themes and fully customizable themes</li>
+ <li>Fix user feedback when loading treeview</li>
  </ol>
