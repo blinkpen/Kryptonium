@@ -79,7 +79,7 @@ Partial Class Form9
         Me.MinimizeBox = False
         Me.Name = "Form9"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Manage Recent Projects - Kryptonium"
+        Me.Text = "Recent Project Manager - Kryptonium"
         Me.ResumeLayout(False)
 
     End Sub
