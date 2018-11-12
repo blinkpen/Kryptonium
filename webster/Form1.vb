@@ -404,6 +404,7 @@ Public Class Form1
         ElseIf result = DialogResult.Yes Then
             My.Settings.RECENT_PROJECTS.Clear()
             ToolStripDropDownButton2.DropDownItems.Clear()
+
         End If
     End Sub
 
@@ -423,9 +424,7 @@ Public Class Form1
         FTS.Items.Clear()
         'WebControl2.Source = New Uri("file:///")
 
-
-        'KEVIN~~ NEED TO FIX THIS!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!!!!!!!~~~~~~~~~~~~~~~~~~~~~~!!!!!!!!!~~~~~~~~~~~~~~~~~~~~~~
-        If My.Settings.RECENT_PROJECTS Is Nothing Then
+        If My.Settings.RECENT_PROJECTS.Count = 0 Then
             ToolStripDropDownButton2.DropDownItems.Clear()
         Else
             ToolStripDropDownButton2.DropDownItems.Add("Clear all recent projects", My.Resources.bin15, AddressOf ClearProjects)
