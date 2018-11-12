@@ -400,17 +400,12 @@ Public Class Form1
     Private Sub ClearProjects()
         Dim result As Integer = MessageBox.Show("Are you sure that you want to clear all recent projects? This can not be undone.", "Warning", MessageBoxButtons.YesNoCancel)
         If result = DialogResult.Cancel Then
-
         ElseIf result = DialogResult.No Then
-
         ElseIf result = DialogResult.Yes Then
             My.Settings.RECENT_PROJECTS.Clear()
             ToolStripDropDownButton2.DropDownItems.Clear()
-
         End If
     End Sub
-
-
 
     Private Sub REGEN_RECENTPROJ()
         ToolStripDropDownButton2.DropDownItems.Clear()
@@ -428,9 +423,10 @@ Public Class Form1
         FTS.Items.Clear()
         'WebControl2.Source = New Uri("file:///")
 
+
+        'KEVIN~~ NEED TO FIX THIS!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!!!!!!!~~~~~~~~~~~~~~~~~~~~~~!!!!!!!!!~~~~~~~~~~~~~~~~~~~~~~
         If My.Settings.RECENT_PROJECTS Is Nothing Then
             ToolStripDropDownButton2.DropDownItems.Clear()
-
         Else
             ToolStripDropDownButton2.DropDownItems.Add("Clear all recent projects", My.Resources.bin15, AddressOf ClearProjects)
 
@@ -1350,30 +1346,34 @@ Public Class Form1
     End Sub
 
     Private Sub CopyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem.Click
-        Try
-            For Each paper In papers
-                If paper.Name = CURRENTEDIT Then
-                    Clipboard.Clear()
-                    Clipboard.SetText(paper.SelectedText)
-                End If
-            Next
-        Catch ex As Exception
+        'Try
+        For Each paper In papers
+            If paper.Name = CURRENTEDIT Then
+                Clipboard.Clear()
+                Clipboard.SetText(paper.SelectedText)
+            End If
+        Next
+        'Catch ex As Exception
 
-        End Try
+        'End Try
+
+        'MsgBox(papers.Item(CURRENTEDIT))
+        'Clipboard.Clear()
+        'Clipboard.SetText(CURRENTEDIT.SelectedText)
 
     End Sub
 
     Private Sub PasteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PasteToolStripMenuItem.Click
-        Try
-            For Each paper In papers
+        'Try
+        For Each paper In papers
                 If paper.Name = CURRENTEDIT Then
                     paper.SelectedText = Clipboard.GetText
 
                 End If
             Next
-        Catch ex As Exception
+        'Catch ex As Exception
 
-        End Try
+        'End Try
 
     End Sub
 
@@ -1386,15 +1386,15 @@ Public Class Form1
     End Sub
 
     Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
-        Try
-            For Each paper In papers
+        'Try
+        For Each paper In papers
                 If paper.Name = CURRENTEDIT Then
                     paper.SelectAll()
                 End If
             Next
-        Catch ex As Exception
+        'Catch ex As Exception
 
-        End Try
+        'End Try
     End Sub
 
     Private Sub FileNameOnlyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileNameOnlyToolStripMenuItem.Click
