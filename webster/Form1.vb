@@ -408,7 +408,11 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub REGEN_RECENTPROJ()
+    Private Sub ManageProjects()
+        Form9.Show()
+    End Sub
+
+    Public Sub REGEN_RECENTPROJ()
         ToolStripDropDownButton2.DropDownItems.Clear()
 
         Try
@@ -427,6 +431,8 @@ Public Class Form1
         If My.Settings.RECENT_PROJECTS.Count = 0 Then
             ToolStripDropDownButton2.DropDownItems.Clear()
         Else
+
+            ToolStripDropDownButton2.DropDownItems.Add("Manage recent projects..", My.Resources.tools, AddressOf ManageProjects)
             ToolStripDropDownButton2.DropDownItems.Add("Clear all recent projects", My.Resources.bin15, AddressOf ClearProjects)
 
         End If
@@ -462,10 +468,6 @@ Public Class Form1
             FolderBrowserDialog1.SelectedPath = MenuItem.Text
 
             REGEN_RECENTPROJ()
-
-
-
-
 
         Catch ex As Exception
             Dim result As Integer = MessageBox.Show("That directory has either been moved, changed, or deleted. Would you like to remove it from the list?", "Kryptonium - 404", MessageBoxButtons.YesNoCancel)
@@ -1038,7 +1040,9 @@ Public Class Form1
 
 
     Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
+        FolderBrowserDialog1.SelectedPath = Nothing
         FolderBrowserDialog1.ShowDialog()
+
         Try
             MAINDIR = FolderBrowserDialog1.SelectedPath
 
@@ -1365,11 +1369,11 @@ Public Class Form1
     Private Sub PasteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PasteToolStripMenuItem.Click
         'Try
         For Each paper In papers
-                If paper.Name = CURRENTEDIT Then
-                    paper.SelectedText = Clipboard.GetText
+            If paper.Name = CURRENTEDIT Then
+                paper.SelectedText = Clipboard.GetText
 
-                End If
-            Next
+            End If
+        Next
         'Catch ex As Exception
 
         'End Try
@@ -1387,10 +1391,10 @@ Public Class Form1
     Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
         'Try
         For Each paper In papers
-                If paper.Name = CURRENTEDIT Then
-                    paper.SelectAll()
-                End If
-            Next
+            If paper.Name = CURRENTEDIT Then
+                paper.SelectAll()
+            End If
+        Next
         'Catch ex As Exception
 
         'End Try
@@ -2442,6 +2446,8 @@ Public Class Form1
     Private Sub ToolStripDropDownButton2_Click(sender As Object, e As EventArgs) Handles ToolStripDropDownButton2.Click
 
     End Sub
+
+
 
 
 

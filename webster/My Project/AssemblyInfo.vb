@@ -1,4 +1,5 @@
-﻿Imports System
+﻿Imports System.Resources
+Imports System
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 
@@ -12,7 +13,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("Real-Time Web Developing Software")>
 <Assembly: AssemblyCompany("WizTech")>
 <Assembly: AssemblyProduct("Kryptonium")>
-<Assembly: AssemblyCopyright("Copyright ©  2018")>
+<Assembly: AssemblyCopyright("Copyright © WizTech 2018")>
 <Assembly: AssemblyTrademark("WizTech")>
 
 <Assembly: ComVisible(False)>
@@ -33,3 +34,4 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyVersion("1.0.0.0")>
 <Assembly: AssemblyFileVersion("1.0.0.0")>
+<Assembly: NeutralResourcesLanguage("en-US")>
