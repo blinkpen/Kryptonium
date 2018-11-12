@@ -25,5 +25,6 @@
  <li>Fix cursor icon changes when switching between "grab color from screen" mode and regular mode</li>
  <li>Implement themes: Pre-made themes and fully customizable themes</li>
  <li>Fix user feedback when loading treeview</li>
- <li>Add option to clear recent projects</li>
+ <li>Fix option to "clear recent projects"</li>
+ <li>Fix copy/paste bug (sometimes works, sometimes not. WHY?)</li>
  </ol>
