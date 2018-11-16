@@ -27,5 +27,5 @@
  <li>Fix user feedback when loading treeview</li>
  <li>Fix option to "clear recent projects"✔</li>
  <li>Fix copy/paste bug (sometimes works, sometimes not. WHY?)✔</li>
- <li>Implement option to remove a single item from the recent projects list</li>
+ <li>Implement option to remove a single item from the recent projects list✔</li>
  </ol>
