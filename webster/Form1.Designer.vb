@@ -73,6 +73,7 @@ Partial Class Form1
         Me.GetColorFromScreenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewGridToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ColorComplementaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator14 = New System.Windows.Forms.ToolStripSeparator()
         Me.CSSToolbarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BackgroundToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NoneToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -148,6 +149,7 @@ Partial Class Form1
         Me.FaTabStripItem10 = New FarsiLibrary.Win.FATabStripItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.ToolStripSeparator15 = New System.Windows.Forms.ToolStripSeparator()
         Me.ContextMenuStrip1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -487,11 +489,11 @@ Partial Class Form1
         '
         'PictureBox3
         '
-        Me.PictureBox3.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox3.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.PictureBox3.Image = Global.Kryptonium.My.Resources.Resources.cubik2
-        Me.PictureBox3.Location = New System.Drawing.Point(75, 82)
+        Me.PictureBox3.Location = New System.Drawing.Point(184, 175)
         Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(183, 166)
+        Me.PictureBox3.Size = New System.Drawing.Size(36, 36)
         Me.PictureBox3.TabIndex = 3
         Me.PictureBox3.TabStop = False
         Me.PictureBox3.Visible = False
@@ -539,6 +541,7 @@ Partial Class Form1
         '
         'ToolStripDropDownButton2
         '
+        Me.ToolStripDropDownButton2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator15})
         Me.ToolStripDropDownButton2.ForeColor = System.Drawing.Color.White
         Me.ToolStripDropDownButton2.Image = CType(resources.GetObject("ToolStripDropDownButton2.Image"), System.Drawing.Image)
         Me.ToolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -621,7 +624,7 @@ Partial Class Form1
         '
         Me.ToolStripDropDownButton1.AutoToolTip = False
         Me.ToolStripDropDownButton1.BackColor = System.Drawing.Color.Transparent
-        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ColorPickerToolStripMenuItem, Me.GetColorFromScreenToolStripMenuItem, Me.ViewGridToolStripMenuItem, Me.ColorComplementaryToolStripMenuItem, Me.CSSToolbarToolStripMenuItem, Me.BackgroundToolStripMenuItem})
+        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ColorPickerToolStripMenuItem, Me.GetColorFromScreenToolStripMenuItem, Me.ViewGridToolStripMenuItem, Me.ColorComplementaryToolStripMenuItem, Me.ToolStripSeparator14, Me.CSSToolbarToolStripMenuItem, Me.BackgroundToolStripMenuItem})
         Me.ToolStripDropDownButton1.ForeColor = System.Drawing.Color.White
         Me.ToolStripDropDownButton1.Image = CType(resources.GetObject("ToolStripDropDownButton1.Image"), System.Drawing.Image)
         Me.ToolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -657,6 +660,11 @@ Partial Class Form1
         Me.ColorComplementaryToolStripMenuItem.Name = "ColorComplementaryToolStripMenuItem"
         Me.ColorComplementaryToolStripMenuItem.Size = New System.Drawing.Size(198, 22)
         Me.ColorComplementaryToolStripMenuItem.Text = "Color Complementary.."
+        '
+        'ToolStripSeparator14
+        '
+        Me.ToolStripSeparator14.Name = "ToolStripSeparator14"
+        Me.ToolStripSeparator14.Size = New System.Drawing.Size(195, 6)
         '
         'CSSToolbarToolStripMenuItem
         '
@@ -1272,6 +1280,12 @@ Partial Class Form1
         '
         'BackgroundWorker1
         '
+        Me.BackgroundWorker1.WorkerSupportsCancellation = True
+        '
+        'ToolStripSeparator15
+        '
+        Me.ToolStripSeparator15.Name = "ToolStripSeparator15"
+        Me.ToolStripSeparator15.Size = New System.Drawing.Size(177, 6)
         '
         'Form1
         '
@@ -1447,4 +1461,6 @@ Partial Class Form1
     Friend WithEvents ToolStripButton18 As ToolStripButton
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents ToolStripSeparator14 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator15 As ToolStripSeparator
 End Class

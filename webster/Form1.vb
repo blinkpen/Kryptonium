@@ -7,6 +7,12 @@ Imports System.Runtime.InteropServices
 Imports System.ComponentModel
 Imports Awesomium.Core
 Imports System.Net
+Imports System
+Imports System.Threading
+Imports System.Windows.Forms
+Imports System.Drawing
+Imports System.Drawing.Drawing2D
+
 
 #Region "Custom Font Support"
 Module CustomFont
@@ -157,31 +163,45 @@ Public Class Form1
 #Region "Visual Styles Rendering"
     Private Class MyRenderer : Inherits ToolStripProfessionalRenderer
 
-
-
         Protected Overrides Sub OnRenderMenuItemBackground(ByVal e As System.Windows.Forms.ToolStripItemRenderEventArgs)
-            If e.Item.Selected Then
-                Dim rc As New Rectangle(Point.Empty, e.Item.Size)
-
-                'Set the highlight color
-                e.Graphics.FillRectangle(Brushes.OrangeRed, rc)
-                e.Graphics.DrawRectangle(Pens.Black, 1, 0, rc.Width - 2, rc.Height - 1)
-
+            If e.Item.Text = "Clear all recent projects" Then
+                If e.Item.Selected Then
+                    Dim rc As New Rectangle(Point.Empty, e.Item.Size)
+                    'Set the highlight color
+                    e.Graphics.FillRectangle(Brushes.Red, rc)
+                    e.Graphics.DrawRectangle(Pens.Black, 1, 0, rc.Width - 2, rc.Height - 1)
+                    e.Item.ForeColor = Color.White
+                Else
+                    'Dim rc As New Rectangle(Point.Empty, e.Item.Size)
+                    ''Set the default color
+                    'e.Graphics.FillRectangle(Brushes.Gray, rc)
+                    'e.Graphics.DrawRectangle(Pens.Gray, 1, 0, rc.Width - 2, rc.Height - 1)
+                    Dim rc2 As New Rectangle(Point.Empty, e.Item.Size)
+                    Dim brushy As Brush
+                    brushy = New Drawing.SolidBrush(Color.FromArgb(39, 39, 39))
+                    e.Graphics.FillRectangle(brushy, rc2)
+                    e.Item.ForeColor = Color.Red
+                End If
             Else
-                'Dim rc As New Rectangle(Point.Empty, e.Item.Size)
-                ''Set the default color
-                'e.Graphics.FillRectangle(Brushes.Gray, rc)
-                'e.Graphics.DrawRectangle(Pens.Gray, 1, 0, rc.Width - 2, rc.Height - 1)
+                If e.Item.Selected Then
+                    Dim rc As New Rectangle(Point.Empty, e.Item.Size)
+                    'Set the highlight color
+                    e.Graphics.FillRectangle(Brushes.OrangeRed, rc)
+                    e.Graphics.DrawRectangle(Pens.Black, 1, 0, rc.Width - 2, rc.Height - 1)
+                Else
+                    'Dim rc As New Rectangle(Point.Empty, e.Item.Size)
+                    ''Set the default color
+                    'e.Graphics.FillRectangle(Brushes.Gray, rc)
+                    'e.Graphics.DrawRectangle(Pens.Gray, 1, 0, rc.Width - 2, rc.Height - 1)
 
-                Dim rc2 As New Rectangle(Point.Empty, e.Item.Size)
-                Dim brushy As Brush
-                brushy = New Drawing.SolidBrush(Color.FromArgb(39, 39, 39))
-                e.Graphics.FillRectangle(brushy, rc2)
-
+                    Dim rc2 As New Rectangle(Point.Empty, e.Item.Size)
+                    Dim brushy As Brush
+                    brushy = New Drawing.SolidBrush(Color.FromArgb(39, 39, 39))
+                    e.Graphics.FillRectangle(brushy, rc2)
+                End If
             End If
-
-
         End Sub
+
 
         Protected Overrides Sub OnRenderButtonBackground(ByVal e As ToolStripItemRenderEventArgs)
             If Not e.Item.Selected Then
@@ -202,7 +222,7 @@ Public Class Form1
 
         End Sub
 
-        Protected Overrides Sub OnRenderdropdownButtonBackground(ByVal e As ToolStripItemRenderEventArgs)
+        Protected Overrides Sub OnRenderDropDownButtonBackground(ByVal e As ToolStripItemRenderEventArgs)
             If Not e.Item.Selected Then
                 MyBase.OnRenderDropDownButtonBackground(e)
                 Dim brushy As Brush
@@ -246,6 +266,8 @@ Public Class Form1
                 'Dim LineRight As Integer = tsbounds.Right
                 'e.Graphics.DrawLine(New Pen(Brushes.Red), LineLeft, LineY, LineRight, LineY)
             Else
+
+
             End If
         End Sub
 
@@ -299,12 +321,18 @@ Public Class Form1
         End If
 
         If wParam.ToInt32 = WM_MOUSEHOVER Then
+
             'MsgBox("poop")
             'Return 1
         End If
         'If wParam.ToInt32 = WM_RBUTTONDOWN Then
         '    If CheckBox_StopRight.Checked = True Then Return 1
         'End If
+
+
+
+
+
         Return CallNextHookEx(WH_MOUSE_LL, nCode, wParam, lParam)
     End Function
 
@@ -313,6 +341,8 @@ Public Class Form1
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
         DoubleBuffered = True
         PictureBox3.SizeMode = PictureBoxSizeMode.CenterImage
         TreeView1.Font = CustomFont2.GetInstance(12, FontStyle.Regular)
@@ -330,6 +360,7 @@ Public Class Form1
         ToolStripDropDownButton1.DropDownItems.Item(0).Image = ImageList2.Images(ImageList2.Images.Keys(0))
         ToolStripDropDownButton1.DropDown.BackColor = Color.FromArgb(39, 39, 39)
         ToolStripDropDownButton1.DropDown.ForeColor = Color.White
+        ToolStripDropDownButton2.DropDown.BackColor = Color.FromArgb(39, 39, 39)
         ToolStripDropDownButton2.DropDown.ForeColor = Color.White
         NoneToolStripMenuItem.ForeColor = Color.White
         CustomToolStripMenuItem.ForeColor = Color.White
@@ -397,6 +428,14 @@ Public Class Form1
 
     End Sub
 
+    Private Sub ToolStripSeparator14_Paint(ByVal sender As Object, ByVal e As PaintEventArgs) Handles ToolStripSeparator14.Paint
+        e.Graphics.DrawLine(Pens.DimGray, 0, 0, ToolStripSeparator14.Width, 0)
+    End Sub
+
+    Private Sub ToolStripSeparator15_Paint(ByVal sender As Object, ByVal e As PaintEventArgs) Handles ToolStripSeparator15.Paint
+        e.Graphics.DrawLine(Pens.DimGray, 0, 0, ToolStripSeparator15.Width, 0)
+    End Sub
+
     Private Sub ClearProjects()
         Dim result As Integer = MessageBox.Show("Are you sure that you want to clear all recent projects? This can not be undone.", "Warning", MessageBoxButtons.YesNoCancel)
         If result = DialogResult.Cancel Then
@@ -431,12 +470,14 @@ Public Class Form1
         If My.Settings.RECENT_PROJECTS.Count = 0 Then
             ToolStripDropDownButton2.DropDownItems.Clear()
         Else
-
+            ToolStripDropDownButton2.DropDownItems.Add(ToolStripSeparator15())
             ToolStripDropDownButton2.DropDownItems.Add("Manage recent projects..", My.Resources.tools, AddressOf ManageProjects)
             ToolStripDropDownButton2.DropDownItems.Add("Clear all recent projects", My.Resources.bin15, AddressOf ClearProjects)
 
         End If
     End Sub
+
+
 
     Private Sub MenuItem_Click(sender As Object, e As EventArgs)
         Dim MenuItem = DirectCast(sender, ToolStripMenuItem)
@@ -458,6 +499,8 @@ Public Class Form1
             TreeView1.Nodes.Clear()
             TreeView1.Nodes.Add(MAINDIR)
             'Populate this root node
+            'BackgroundWorker1.RunWorkerAsync()
+            'PopTree()
             PopulateTreeView(MAINDIR, TreeView1.Nodes(0))
 
             If My.Settings.RECENT_PROJECTS.Contains(MAINDIR.ToString) Then
@@ -563,12 +606,7 @@ Public Class Form1
 
 
 
-
-
     Private Sub PopulateTreeView(ByVal dir As String, ByVal parentNode As TreeNode)
-
-
-        'PictureBox3.Visible = True
 
         Dim folder As String = String.Empty
         Try
@@ -577,6 +615,8 @@ Public Class Form1
             If folders.Length <> 0 Then
                 Dim folderNode As TreeNode = Nothing
                 Dim folderName As String = String.Empty
+
+
                 For Each folder In folders
                     folderName = IO.Path.GetFileName(folder)
                     folderNode = parentNode.Nodes.Add(folderName)
@@ -584,8 +624,8 @@ Public Class Form1
                     folderNode.Name = "folder"
                     PopulateTreeView(folder, folderNode)
                 Next
-
             End If
+
 
             'Add the files to treeview
             Dim files() As String = IO.Directory.GetFiles(dir)
@@ -641,6 +681,7 @@ Public Class Form1
                         fileNode.SelectedImageKey = ImageList1.Images.Keys(11)
                         fileNode.Name = "other"
                     End If
+
                 Next
 
             End If
@@ -651,6 +692,7 @@ Public Class Form1
 
 
     End Sub
+
 
     Private Sub TreeView1_NodeMouseClick(sender As Object, e As System.Windows.Forms.TreeNodeMouseClickEventArgs) Handles TreeView1.NodeMouseClick
         If e.Button = MouseButtons.Right Then
@@ -1061,6 +1103,8 @@ Public Class Form1
             TreeView1.Nodes.Clear()
             TreeView1.Nodes.Add(MAINDIR)
             'Populate this root node
+            'BackgroundWorker1.RunWorkerAsync()
+            'PopTree()
             PopulateTreeView(MAINDIR, TreeView1.Nodes(0))
 
             If My.Settings.RECENT_PROJECTS.Contains(MAINDIR.ToString) Then
@@ -2422,14 +2466,8 @@ Public Class Form1
 
 
 
-    Private Sub BackgroundWorker1_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted
-        PictureBox3.Visible = False
-    End Sub
 
-    Private Sub BackgroundWorker1_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundWorker1.DoWork
-        'System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = False
 
-    End Sub
 
     Private Sub SplitContainer1_SplitterMoved(sender As Object, e As SplitterEventArgs) Handles SplitContainer1.SplitterMoved
 
@@ -2446,6 +2484,26 @@ Public Class Form1
     Private Sub ToolStripDropDownButton2_Click(sender As Object, e As EventArgs) Handles ToolStripDropDownButton2.Click
 
     End Sub
+
+    Private Sub TreeView1_AfterExpand(sender As Object, e As TreeViewEventArgs) Handles TreeView1.AfterExpand
+        PictureBox3.Visible = False
+    End Sub
+
+
+    'Private Sub BackgroundWorker1_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundWorker1.DoWork
+    '    PopulateTreeView(MAINDIR, TreeView1.Nodes(0))
+    'End Sub
+
+    'Private Sub BackgroundWorker1_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BackgroundWorker1.ProgressChanged
+    '    PictureBox3.Visible = True
+    'End Sub
+
+    'Private Sub BackgroundWorker1_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted
+    '    PictureBox3.Visible = False
+    'End Sub
+
+
+
 
 
 
