@@ -1611,6 +1611,13 @@ Public Class Form1
                 Panel3.BackColor = Color.FromArgb(firsty)
 
 
+
+                Dim firstx As Color = ToolStripButton7.BackColor
+                ToolStripTextBox1.Text = firstx.A & ", " & firstx.R & ", " & firstx.G & ", " & firstx.B
+
+
+
+
                 'LIVE VIEW OF COLORS AND VALUES IN FORM7
                 If Form7.CheckBox1.Checked = True Then
 
