@@ -2,6 +2,8 @@
 Imports System.Runtime.InteropServices
 Imports System.Drawing.Drawing2D
 Imports System.Windows.Forms.Form
+Imports Microsoft.VisualBasic.Devices
+
 Public Class Form4
     Dim defaultcurse As Cursor
     Public MouseX = Form1.MouseX

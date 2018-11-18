@@ -322,8 +322,6 @@ Public Class Form1
 
         If wParam.ToInt32 = WM_MOUSEHOVER Then
 
-            'MsgBox("poop")
-            'Return 1
         End If
         'If wParam.ToInt32 = WM_RBUTTONDOWN Then
         '    If CheckBox_StopRight.Checked = True Then Return 1

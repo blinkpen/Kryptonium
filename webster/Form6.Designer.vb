@@ -40,6 +40,7 @@ Partial Class Form6
         '
         Me.PictureBox1.BackgroundImage = Global.Kryptonium.My.Resources.Resources.eyesclosed
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(362, 281)
