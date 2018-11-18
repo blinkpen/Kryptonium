@@ -160,6 +160,7 @@ Public Class Form1
     Dim GETROOT As List(Of TreeNode)
     Dim SMOOTHSAILOR As Boolean = False
 
+
 #Region "Visual Styles Rendering"
     Private Class MyRenderer : Inherits ToolStripProfessionalRenderer
 
@@ -454,7 +455,7 @@ Public Class Form1
 
         Try
             For Each proj As String In My.Settings.RECENT_PROJECTS
-                ToolStripDropDownButton2.DropDownItems.Add(proj, My.Resources.web_icong, AddressOf MenuItem_Click)
+                ToolStripDropDownButton2.DropDownItems.Add(proj, My.Resources.kr_logo20, AddressOf MenuItem_Click)
             Next
             TreeView1.Nodes(0).Expand()
 
@@ -602,9 +603,12 @@ Public Class Form1
 
     End Sub
 
-
+    Private Sub PlayLoadingGIF()
+        PictureBox3.Visible = True
+    End Sub
 
     Private Sub PopulateTreeView(ByVal dir As String, ByVal parentNode As TreeNode)
+        PlayLoadingGIF()
 
         Dim folder As String = String.Empty
         Try
@@ -1275,7 +1279,7 @@ Public Class Form1
     End Sub
 
     Private Sub webcontrol2_LoadingFrame(sender As Object, e As LoadingFrameEventArgs) Handles WebControl2.LoadingFrame
-        ToolStripButton8.Image = My.Resources.star
+        ToolStripButton8.Image = My.Resources.cubik2
         Cursor = Cursors.WaitCursor
     End Sub
 

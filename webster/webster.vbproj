@@ -231,6 +231,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="krcon.ico" />
+    <None Include="Resources\kr logo20.png" />
+    <None Include="Resources\alpha.png" />
     <None Include="Resources\2000px-Tools.svg.png" />
     <None Include="Resources\bin15.png" />
     <None Include="Resources\bin20.png" />

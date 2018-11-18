@@ -101,6 +101,9 @@
     Private Sub Form6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DoubleBuffered = True
 
+        Dim thrd As System.Threading.Thread = New System.Threading.Thread(New System.Threading.ThreadStart(AddressOf LoadBackgroundImage))
+        thrd.Start()
+
         ToolStrip1.Renderer = New MyRenderer
         If TypeOf ToolStrip1.Renderer Is ToolStripProfessionalRenderer Then
             CType(ToolStrip1.Renderer, ToolStripProfessionalRenderer).RoundedEdges = False
@@ -138,8 +141,18 @@
         Dim asssized As New Size(PictureBox1.Width + 33, PictureBox1.Height + 64)
         'Me.MaximumSize = asssized
 
+        PictureBox1.Size = maxsized
+        PictureBox1.Top = (Me.ClientSize.Height / 2) - (PictureBox1.Height / 2)
+        PictureBox1.Left = (Me.ClientSize.Width / 2) - (PictureBox1.Width / 2)
+
         'MsgBox("ASSSIZE: " & asssized.ToString & " MAXSIZE: " & maxsized.ToString & " BITMAPSIZE: " & Clipboard.GetImage.Size.ToString)
     End Sub
+
+    Private Sub LoadBackgroundImage()
+        Dim img As Image = My.Resources.alpha
+        Panel1.BackgroundImage = img
+    End Sub
+
 
     Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
         Clipboard.SetImage(PictureBox1.BackgroundImage)
@@ -156,6 +169,11 @@
 
     Private Sub Form6_Scroll(sender As Object, e As ScrollEventArgs) Handles Me.Scroll
         ToolStrip1.Dock = DockStyle.Top
+    End Sub
+
+    Private Sub Form6_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+        PictureBox1.Top = (Me.ClientSize.Height / 2) - (PictureBox1.Height / 2)
+        PictureBox1.Left = (Me.ClientSize.Width / 2) - (PictureBox1.Width / 2)
     End Sub
 
     'Private Sub Form6_Resize(sender As Object, e As EventArgs) Handles Me.Resize
