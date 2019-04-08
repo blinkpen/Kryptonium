@@ -29,6 +29,7 @@
  <li>Fix copy/paste bug (sometimes works, sometimes not. WHY?)✔</li>
  <li>Implement option to remove a single item from the recent projects list✔</li>
  <li>Fix custom background image for text editor option</li>
+ <li>implement collapsing scopes for CSS and other languages not supported out of the box</li>
  </ol>
 
 <h2>New Edits</h2>
