@@ -28,4 +28,11 @@
  <li>Fix option to "clear recent projects"✔</li>
  <li>Fix copy/paste bug (sometimes works, sometimes not. WHY?)✔</li>
  <li>Implement option to remove a single item from the recent projects list✔</li>
+ <li>Fix custom background image for text editor option</li>
+ </ol>
+
+<h2>New Edits</h2>
+<ol>
+ <li>Browser's Title label updates when hovering a link, then reverts back to current page's title when not hovering</li>
+ 
  </ol>
